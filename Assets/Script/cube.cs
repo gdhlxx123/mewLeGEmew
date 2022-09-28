@@ -13,6 +13,10 @@ public class cube : MonoBehaviour
     public int minChild = 0;
     public Vector4 range = new Vector4(-4.16f, 7f ,4.16f,- 3f);
     public bool ifFront = true;
+    public bool isMoving = false;
+    public float moveSpeed = 20f;
+    private Vector3 target;
+
     private void Awake()
     {
         cate = (int)Mathf.Floor(Random.Range(0, 8));
@@ -62,18 +66,18 @@ public class cube : MonoBehaviour
         }
         return false;
     }
-    public void toFront()
+    public void toFront()//把他变成亮
     {
         if (gameManager == null)
             gameManager = GameObject.Find("Manager").GetComponent<clickManager>();
         this.GetComponent<MeshRenderer>().material = gameManager.frontMaterials[cate];
         ifFront = true;
     }
-    public void toBack()
+    public void toBack()//暗的
     {
         if(gameManager == null)
             gameManager = GameObject.Find("Manager").GetComponent<clickManager>();
-        this.GetComponent<MeshRenderer>().material = gameManager.backMaterials[cate];
+        this.GetComponent<MeshRenderer>().material = gameManager.backMaterials[cate];//根据种类选择材质
         ifFront = false;
     }
     public void function()
@@ -85,6 +89,23 @@ public class cube : MonoBehaviour
         else if (cate == 8)
         {
             Application.Quit();
+        }
+    }
+    public void MoveTo(Vector3 target)
+    {
+        this.target = target;
+        this.isMoving = true;
+    }
+    void FixedUpdate()
+    {
+        if (this.isMoving)
+        {
+            float step = moveSpeed * Time.deltaTime;
+            this.transform.position = Vector3.MoveTowards(this.transform.position, this.target, step);
+            if (this.transform.position == this.target)
+            {
+                isMoving = false;
+            }
         }
     }
 }

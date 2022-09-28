@@ -39,6 +39,8 @@ public class clickManager : MonoBehaviour
     float xRotation = 0f;
     public float speed = 3f;
     public float jumpHight = 2f;
+    public float topHeight = 10f;
+    public GameObject audioManagerObj;
 
     public GameObject winInterface;
     public GameObject endInterface;
@@ -46,13 +48,17 @@ public class clickManager : MonoBehaviour
     private GameObject currentArrow;
     private Rigidbody arrowRigid;
     private bool ifPlay = true;
+    private AudioManager audioManager;
+
     private void Start()
     {
         if (mode == gameMode.Fps)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            switchMode();
         }
+        audioManager = audioManagerObj.GetComponent<AudioManager>();
     }
     private void switchMode()
     {
@@ -86,6 +92,7 @@ public class clickManager : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(mousePos);
             if (Physics.Raycast(ray, out RaycastHit hit) && Input.GetMouseButtonDown(0))
             {
+                audioManager.PlayClickMusic();
                 cube c = hit.collider.gameObject.GetComponent<cube>();
                 if (c != null && c.ifFront == true)
                 {
@@ -161,6 +168,8 @@ public class clickManager : MonoBehaviour
         }
         if(cateCount == 2)
         {
+            audioManager.PlayDestroyMusic();
+            c.MoveTo(new Vector3(-4 + index + 3, 1.2f, -7));
             Destroy(c.gameObject);
             Destroy(window[index].gameObject);
             Destroy(window[index - 1].gameObject);
@@ -178,7 +187,11 @@ public class clickManager : MonoBehaviour
         }
         else if(cateCount == 1)
         {
-            c.transform.position = new Vector3(-4 + index + 2, 1.2f, -7);
+            Vector3 pos = c.transform.position;
+            pos.y = topHeight;
+            c.transform.position = pos;
+            c.MoveTo(new Vector3(-4 + index + 2, topHeight, -7));
+            //c.transform.position = new Vector3(-4 + index + 2, 1.2f, -7);
             for (int i = index+1; i < window.Count; i++)
             {
                 window[i].transform.Translate(new Vector3(1, 0, 0), Space.World);
@@ -187,7 +200,11 @@ public class clickManager : MonoBehaviour
         }
         else
         {
-            c.transform.position = new Vector3(-4 + window.Count + 1,1.2f,-7);
+            Vector3 pos = c.transform.position;
+            pos.y = topHeight;
+            c.transform.position = pos;
+            c.MoveTo(new Vector3(-4 + window.Count + 1, topHeight, -7));
+            //c.transform.position = new Vector3(-4 + window.Count + 1,1.2f,-7);
             window.Add(c);
         }
         c.function();

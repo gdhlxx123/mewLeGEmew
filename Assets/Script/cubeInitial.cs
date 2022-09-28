@@ -77,7 +77,7 @@ public class cubeInitial : MonoBehaviour
         GameObject cubeObject = cubeCom.gameObject;
         float x = pos.x, z = pos.z;
         bool ifbro = false,ifAllSatis = true;
-        int cate = (int)Mathf.Floor(Random.Range(0, 8));
+        int cate = (int)Mathf.Floor(Random.Range(0, 8));//决定了种类
         if(level == 1||level == 2)
         {
             for(int i = 0;i < 8; i++)
@@ -113,6 +113,7 @@ public class cubeInitial : MonoBehaviour
         if (!ifbro && x > cubeCom.range.x && x < cubeCom.range.z && z < cubeCom.range.y && z > cubeCom.range.w)
         {
             GameObject child = GameObject.Instantiate(cubeCom.gameObject,pos, cubeObject.transform.rotation, levelObjs[level - 1].transform);
+            //方块初始化
             cube newCube = child.GetComponent<cube>();
             newCube.parent = new List<cube>();
             newCube.children = new List<cube>();
