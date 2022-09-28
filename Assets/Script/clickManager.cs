@@ -194,7 +194,10 @@ public class clickManager : MonoBehaviour
             //c.transform.position = new Vector3(-4 + index + 2, 1.2f, -7);
             for (int i = index+1; i < window.Count; i++)
             {
-                window[i].transform.Translate(new Vector3(1, 0, 0), Space.World);
+                if(!window[i].isMoving)
+                    window[i].transform.Translate(new Vector3(-2, 0, 0),Space.World);
+                else
+                    window[i].target  = window[i].target + new Vector3(-2, 0, 0);
             }
             window.Insert(index, c);
         }
