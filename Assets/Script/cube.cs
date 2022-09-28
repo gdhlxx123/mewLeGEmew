@@ -15,7 +15,7 @@ public class cube : MonoBehaviour
     public bool ifFront = true;
     public bool isMoving = false;
     public float moveSpeed = 20f;
-    private Vector3 target;
+    public Vector3 target;
 
     private void Awake()
     {
@@ -66,18 +66,18 @@ public class cube : MonoBehaviour
         }
         return false;
     }
-    public void toFront()//°ÑËû±ä³ÉÁÁ
+    public void toFront()//æŠŠä»–å˜æˆäº®
     {
         if (gameManager == null)
             gameManager = GameObject.Find("Manager").GetComponent<clickManager>();
         this.GetComponent<MeshRenderer>().material = gameManager.frontMaterials[cate];
         ifFront = true;
     }
-    public void toBack()//°µµÄ
+    public void toBack()//æš—çš„
     {
         if(gameManager == null)
             gameManager = GameObject.Find("Manager").GetComponent<clickManager>();
-        this.GetComponent<MeshRenderer>().material = gameManager.backMaterials[cate];//¸ù¾İÖÖÀàÑ¡Ôñ²ÄÖÊ
+        this.GetComponent<MeshRenderer>().material = gameManager.backMaterials[cate];//æ ¹æ®ç§ç±»é€‰æ‹©æè´¨
         ifFront = false;
     }
     public void function()
