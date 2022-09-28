@@ -15,7 +15,7 @@ public class cube : MonoBehaviour
     public bool ifFront = true;
     public bool isMoving = false;
     public float moveSpeed = 20f;
-    private Vector3 target;
+    public Vector3 target;
 
     private void Awake()
     {

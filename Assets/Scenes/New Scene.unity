@@ -296,7 +296,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8428\u4E86\u4E2A\u8428"
+  m_Text: "\u989C\u4E86\u4E2A\u6E05"
 --- !u!222 &334949351
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -701,7 +701,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: c957c1a09c3761d4d9423ef718c9da64, type: 3}
+  m_Texture: {fileID: 2800000, guid: 645c9073347040b418d527f6b455813f, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

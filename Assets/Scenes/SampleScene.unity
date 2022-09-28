@@ -862,7 +862,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e6fa97e3e5fda3744a6b2d916747b621, type: 2}
+  - {fileID: 2100000, guid: 31c7fc060d316bb48be61f64ac2405ba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4205,25 +4205,25 @@ MonoBehaviour:
   upBody: {fileID: 963194225}
   window: []
   backMaterials:
-  - {fileID: 2100000, guid: 253f469b5ff4596488a8df316861d641, type: 2}
-  - {fileID: 2100000, guid: 81024658c3b2ce3429a5618a92b422d9, type: 2}
-  - {fileID: 2100000, guid: a02104ca23addcc41a7b0de0a5710c35, type: 2}
-  - {fileID: 2100000, guid: 6ea9efc85e308ab4ba9ea0a0d47a1343, type: 2}
-  - {fileID: 2100000, guid: 43bea26c787e8ce4eaecd8025acff463, type: 2}
-  - {fileID: 2100000, guid: d4c931b53cad15f4e8e682dd195a39e7, type: 2}
-  - {fileID: 2100000, guid: 8ce89f876b83e6742a1c5e3b6a298521, type: 2}
-  - {fileID: 2100000, guid: d0d93d6c03def374684cee806491250c, type: 2}
+  - {fileID: 2100000, guid: 9811b717d4d81df42bd605abbcd0aa71, type: 2}
+  - {fileID: 2100000, guid: 1480638a33cc9b44483aac883709e7c9, type: 2}
+  - {fileID: 2100000, guid: 3a858a948297cd646b8baef7ef260df3, type: 2}
+  - {fileID: 2100000, guid: b32f9459f990c3842a4ebde7e1dc4093, type: 2}
+  - {fileID: 2100000, guid: 04eb2fd085bca8848b83cb9048bb128d, type: 2}
+  - {fileID: 2100000, guid: b61cbe632dbec53488ae652828f22969, type: 2}
+  - {fileID: 2100000, guid: b77f4931fe9371b4a88a9d1352e688f1, type: 2}
+  - {fileID: 2100000, guid: 0780a258c694a7b418dddeca23725cc0, type: 2}
   - {fileID: 2100000, guid: 2f36038d13ab9e84c8f4c21418ae3cfe, type: 2}
   - {fileID: 2100000, guid: 608da462aefa0f34bb9005afb9e735bd, type: 2}
   frontMaterials:
-  - {fileID: 2100000, guid: 24748c0e7f4d920459114b08f38350d0, type: 2}
-  - {fileID: 2100000, guid: c69ff8b6d5d5545409e1b0e9fb0e0fd7, type: 2}
-  - {fileID: 2100000, guid: 8c170e5130832174ab191e0f9fc2d643, type: 2}
-  - {fileID: 2100000, guid: 4316edd69347bf84ca692a136c946a8a, type: 2}
-  - {fileID: 2100000, guid: 0769d55c975474d4480009596810df06, type: 2}
-  - {fileID: 2100000, guid: 728ed4dda4141e44f94d56bcbcbfdc0f, type: 2}
-  - {fileID: 2100000, guid: ad39631d5ea33ec41bbd4fdc447cb8cd, type: 2}
-  - {fileID: 2100000, guid: 08afe5e0f0de42f4cb2853a0bc732707, type: 2}
+  - {fileID: 2100000, guid: 16553d7653c75b5408ef834c059171ab, type: 2}
+  - {fileID: 2100000, guid: beb142c3d4a36cb48904f4a8c86bc19b, type: 2}
+  - {fileID: 2100000, guid: 45c503b39b0b37c45a8fbe7675d3c8c6, type: 2}
+  - {fileID: 2100000, guid: 7fa781f061af305439093c09b332c1a8, type: 2}
+  - {fileID: 2100000, guid: fb97b3984a20ffd48a9699299a38c3e4, type: 2}
+  - {fileID: 2100000, guid: a9f246b137562414f90f6675e43b5d7a, type: 2}
+  - {fileID: 2100000, guid: 2e6cca96fdf96b643977c3f751f25be0, type: 2}
+  - {fileID: 2100000, guid: 3f48f5cc2bc9fea4fb9afeaaa24bb9fd, type: 2}
   - {fileID: 2100000, guid: ded4e537c9120b6479c73edd86c808b1, type: 2}
   - {fileID: 2100000, guid: 0e3f04c6545214c4986081eb6a2a69cd, type: 2}
   mode: 1
@@ -4389,8 +4389,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 632afa1ca8633aa41a71b669ae46846a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickMusic: {fileID: 229470827}
-  destroyMusic: {fileID: 1648954843}
+  clickMusic: {fileID: 0}
+  destroyMusic: {fileID: 0}
 --- !u!4 &1312579592
 Transform:
   m_ObjectHideFlags: 0

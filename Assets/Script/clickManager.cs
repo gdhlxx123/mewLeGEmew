@@ -177,7 +177,10 @@ public class clickManager : MonoBehaviour
             window.RemoveAt(index - 1);
             for (int i = index-1;i < window.Count;i++)
             {
-                window[i].transform.Translate(new Vector3(-2, 0, 0),Space.World);
+                if(!window[i].isMoving)
+                    window[i].transform.Translate(new Vector3(-2, 0, 0),Space.World);
+                else
+                    window[i].target  = window[i].target + new Vector3(-2, 0, 0);
             }
             cubeInitial.cubeSum -= 3;
             Debug.Log(cubeInitial.cubeSum);
