@@ -90,6 +90,11 @@ public class clickManager : MonoBehaviour
         {
             switchMode();
         }
+        if (Input.GetKey(KeyCode.C)&& Input.GetKey(KeyCode.J)&&clickCount<3)
+        {
+            clickCount += 1;
+            countText.text = clickCount + "";
+        }
         if (clickManager.Instance.mode == gameMode.Up)
         {
             Vector2 mousePos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
@@ -98,7 +103,7 @@ public class clickManager : MonoBehaviour
             {
                 audioManager.PlayClickMusic();
                 cube c = hit.collider.gameObject.GetComponent<cube>();
-                if (c != null && c.ifFront == true)
+                if (c != null && c.ifFront == true && c.gameObject.layer != LayerMask.NameToLayer("Default"))
                 {
                     clickManager.Instance.add(c);
                 }
@@ -195,7 +200,10 @@ public class clickManager : MonoBehaviour
             //c.transform.position = new Vector3(-4 + index + 2, 1.2f, -7);
             for (int i = index+1; i < window.Count; i++)
             {
-                window[i].transform.Translate(new Vector3(1, 0, 0), Space.World);
+                if (!window[i].isMoving)
+                    window[i].transform.Translate(new Vector3(1, 0, 0), Space.World);
+                else
+                    window[i].target = window[i].target + new Vector3(1, 0, 0);
             }
             window.Insert(index+1, c);
         }

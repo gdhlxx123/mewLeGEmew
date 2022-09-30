@@ -84,14 +84,6 @@ public class cube : MonoBehaviour
     }
     public void function()
     {
-        if (cate == 9)
-        {
-            clickManager.Instance.Respawn();
-        }
-        else if (cate == 8)
-        {
-            Application.Quit();
-        }
     }
     public void MoveTo(Vector3 target)
     {

@@ -78,10 +78,10 @@ public class cubeInitial : MonoBehaviour
         GameObject cubeObject = cubeCom.gameObject;
         float x = pos.x, z = pos.z;
         bool ifbro = false,ifAllSatis = true;
-        int cate = (int)Mathf.Floor(Random.Range(0, 8));//决定了种类
+        int cate = (int)Mathf.Floor(Random.Range(0, 10));//决定了种类
         if(level == 1||level == 2)
         {
-            for(int i = 0;i < 8; i++)
+            for(int i = 0;i < 10; i++)
             {
                 if(cubeCount[i]% 3 != 0)
                 {
