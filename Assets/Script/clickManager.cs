@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public enum gameMode
 {
     Up,
@@ -29,6 +30,8 @@ public class clickManager : MonoBehaviour
     public Material[] backMaterials;
     public Material[] frontMaterials;
     public gameMode mode = gameMode.Up;
+    public int clickCount = 2;
+    public Text countText;
 
     public GameObject arrow;
     public float mouseSensitivity = 100f;
@@ -231,7 +234,18 @@ public class clickManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
-
+    public void pick()
+    {
+        for(int i = 0;i < 3; i++)
+        {
+            if(window.Count > 0)
+            {
+                window[0].gameObject.transform.Translate(new Vector3(0,1,0));
+                //改成可以点击的
+                window.RemoveAt(0);
+            }
+        }
+    }
     public void Respawn()
     {
         SceneManager.LoadScene(1);
@@ -240,5 +254,34 @@ public class clickManager : MonoBehaviour
     public void backMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void fresh()
+    {
+        if (clickCount > 0)
+        {
+            GameObject[] gameobjects = GameObject.FindGameObjectsWithTag("cube");
+            int randomSeed = (int)Mathf.Floor(Random.Range(0, gameobjects.Length)); ;
+            int length = gameobjects.Length;
+            for (int i = 0; i < length; i++)
+            {
+                cube c1 = gameobjects[i].GetComponent<cube>(), c2 = gameobjects[(i + randomSeed) % length].GetComponent<cube>();
+                if (window.Contains(c1) || window.Contains(c2))
+                    continue;
+                int temp = c1.cate;
+                c1.GetComponent<cube>().cate = c2.GetComponent<cube>().cate;
+                c2.cate = temp;
+                if (c1.ifFront)
+                    c1.toFront();
+                else
+                    c1.toBack();
+                if (c2.ifFront)
+                    c2.toFront();
+                else
+                    c2.toBack();
+            }
+            clickCount -= 1;
+            countText.text = clickCount + "";
+        }
     }
 }

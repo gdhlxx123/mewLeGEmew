@@ -9,6 +9,7 @@ public class cubeInitial : MonoBehaviour
     public int maxCubeNum = 4;
     public static int cubeSum = 0;
     public int[] cubeCount;
+    
     /*
      * 重置方块和退出方块
     private bool ifExit = false;
@@ -135,5 +136,5 @@ public class cubeInitial : MonoBehaviour
             }
         }
     }
-
+    
 }
