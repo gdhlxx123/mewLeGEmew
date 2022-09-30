@@ -24,7 +24,8 @@ public class clickManager : MonoBehaviour
     public GameObject fpsBody;
     public GameObject upBody;
     public List<cube> window = new List<cube>();
-    private int windowMaxNum = 6;
+    public List<GameObject> particles;
+    public int windowMaxNum = 6;
     public Material[] backMaterials;
     public Material[] frontMaterials;
     public gameMode mode = gameMode.Up;
@@ -163,25 +164,19 @@ public class clickManager : MonoBehaviour
                 cateCount += 1;
                 index = i;
             }
-            if (cateCount == 2)
-                break;
         }
         if(cateCount == 2)
         {
             audioManager.PlayDestroyMusic();
-            c.MoveTo(new Vector3(-4 + index + 3, 1.2f, -7));
-            Destroy(c.gameObject);
-            Destroy(window[index].gameObject);
-            Destroy(window[index - 1].gameObject);
-            window.RemoveAt(index - 1);
-            window.RemoveAt(index - 1);
-            for (int i = index-1;i < window.Count;i++)
+            for (int i = index + 1; i < window.Count; i++)
             {
-                if(!window[i].isMoving)
-                    window[i].transform.Translate(new Vector3(-2, 0, 0),Space.World);
+                if (!window[i].isMoving)
+                    window[i].transform.Translate(new Vector3(1, 0, 0), Space.World);
                 else
-                    window[i].target  = window[i].target + new Vector3(-2, 0, 0);
+                    window[i].target = window[i].target + new Vector3(1, 0, 0);
             }
+            window.Insert(index+1, c);
+            c.MoveTo(new Vector3(-4 + index + 2, 1.2f, -7),index);
             cubeInitial.cubeSum -= 3;
             Debug.Log(cubeInitial.cubeSum);
             if (cubeInitial.cubeSum == 0)
@@ -199,14 +194,14 @@ public class clickManager : MonoBehaviour
             {
                 window[i].transform.Translate(new Vector3(1, 0, 0), Space.World);
             }
-            window.Insert(index, c);
+            window.Insert(index+1, c);
         }
         else
         {
             Vector3 pos = c.transform.position;
             pos.y = topHeight;
             c.transform.position = pos;
-            c.MoveTo(new Vector3(-4 + window.Count + 1, topHeight, -7));
+            c.MoveTo(new Vector3(-4 + window.Count + 1, topHeight,-7));
             //c.transform.position = new Vector3(-4 + window.Count + 1,1.2f,-7);
             window.Add(c);
         }

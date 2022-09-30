@@ -16,9 +16,11 @@ public class cube : MonoBehaviour
     public bool isMoving = false;
     public float moveSpeed = 20f;
     public Vector3 target;
-
+    public Animator animator;
+    private int index = 0;
     private void Awake()
     {
+        animator = this.GetComponent<Animator>();
         cate = (int)Mathf.Floor(Random.Range(0, 8));
         toFront();
     }
@@ -96,6 +98,12 @@ public class cube : MonoBehaviour
         this.target = target;
         this.isMoving = true;
     }
+    public void MoveTo(Vector3 target,int index)
+    {
+        this.target = target;
+        this.isMoving = true;
+        this.index = index;
+    }
     void FixedUpdate()
     {
         if (this.isMoving)
@@ -105,7 +113,40 @@ public class cube : MonoBehaviour
             if (this.transform.position == this.target)
             {
                 isMoving = false;
+                if(this.index!=0)
+                    eliminate(gameManager.particles,gameManager.window);
             }
         }
+    }
+    public void eliminate(List<GameObject> particles,List<cube> window)
+    {
+        int index = gameManager.window.IndexOf(this);
+        this.animator.Play("destory");
+        window[index-1].animator.Play("destory");
+        window[index-2].animator.Play("destory");
+        particles[index].SetActive(true);
+        particles[index-1].SetActive(true);
+        particles[index-2].SetActive(true);
+        StartCoroutine(destory(particles));
+        StartCoroutine(window[index - 1].destory(particles));
+        StartCoroutine(window[index - 2].destory(particles));
+    }
+    IEnumerator destory(List<GameObject> particles)
+    {
+        yield return new WaitForSeconds(0.5f);
+        int index = gameManager.window.IndexOf(this);
+        //particles[index].SetActive(false);
+        List<cube> window = new List<cube>(gameManager.window);
+        for (int i = index; i < window.Count; i++)
+        {
+            if (!window[i].isMoving)
+                window[i].transform.Translate(new Vector3(-1, 0, 0), Space.World);
+            else
+                window[i].target = window[i].target + new Vector3(-1, 0, 0);
+        }
+        foreach (GameObject particle in particles)
+            particle.SetActive(false);
+        gameManager.window.Remove(this);
+        Destroy(this.gameObject);
     }
 }
